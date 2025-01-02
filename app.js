@@ -11,6 +11,13 @@ app.get('/', function (req, res) {
     res.sendFile(fileName, options)
 })
 
+io.on('connection',function(socket){
+    console.log("A user connected");
+     
+    socket.on('disconnect',function(){
+        console.log("A user disconnected");
+    })
+})
 
 http.listen(5000, function () {
     console.log("server ready on http://127.0.0.1:5000");
